@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# 編輯器
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 臨時文件
+*.tmp
+*.log
+
+# 媒體文件（可選：如果媒體文件很大，可以取消下面的註釋來忽略）
+# media/
+
