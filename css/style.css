@@ -1,206 +1,420 @@
-/* 基本重置 */
+/* 
+ * iTalkShow Music Zone - 楊欣瑜老師的音樂教室
+ * 精簡版樣式表（基於 Basic 主題修改）
+ */
+
+/* ============================================================================
+ *  基本重置 & 佈局
+ * ============================================================================ */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+}
+
 body {
-    font-family: 'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif;
+    font-family: 'Open Sans', 'Microsoft JhengHei', '微軟正黑體', sans-serif;
+    font-size: 16px;
     line-height: 1.6;
-    color: #333;
-    background-color: #f8f9fa;
+    color: #222;
+    background: #fff;
+    min-width: 280px;
+}
+
+.wrapper {
+    margin: 0 auto;
+    width: 100%;
 }
 
 .container {
-    max-width: 1200px;
+    width: 90%;
+    max-width: 1080px;
     margin: 0 auto;
-    padding: 0 20px;
 }
 
-/* 標頭樣式 */
-.site-header {
-    background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);
-    color: white;
-    padding: 20px 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.clearfix:after {
+    clear: both;
 }
 
-.logo-area {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.site-title {
-    font-size: 2.5rem;
-    font-weight: 300;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-}
-
-.site-description {
-    font-size: 1.1rem;
-    opacity: 0.9;
-    font-style: italic;
-}
-
-/* 導航選單 */
-.main-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    padding: 15px 0;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-.main-nav a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.1rem;
-    padding: 5px 10px;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-}
-
-.main-nav a:hover {
-    background-color: rgba(255,255,255,0.1);
-}
-
-.main-nav .current span {
+/* ============================================================================
+ *  文字樣式
+ * ============================================================================ */
+h1, h2, h3, h4, h5, h6, .title {
+    font-family: 'PT Serif', 'Microsoft JhengHei', '微軟正黑體', serif;
     font-weight: bold;
-    color: #1abc9c;
+    line-height: 1.2;
+    margin: 0 0 0.5em 0;
+    padding: 0;
 }
 
-/* 主內容區 */
-.main-content {
-    padding: 40px 20px;
+h1 { font-size: 36px; }
+h2 { font-size: 30px; }
+h3 { font-size: 24px; }
+h4 { font-size: 20px; }
+h5, h6 { font-size: 18px; }
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    text-decoration: none;
+    color: inherit;
 }
 
-/* 文章列表 */
-.articles-list {
-    max-width: 800px;
-    margin: 0 auto;
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
+    color: #936;
 }
 
-.article-item {
-    background: white;
-    padding: 25px;
-    margin-bottom: 30px;
-    border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-    border-left: 4px solid #3498db;
-    transition: transform 0.3s, box-shadow 0.3s;
+p {
+    margin: 0 0 1em 0;
 }
 
-.article-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.article-title {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-}
-
-.article-title a {
-    color: #2c3e50;
+a {
+    color: #222;
     text-decoration: none;
     transition: color 0.3s;
 }
 
-.article-title a:hover {
-    color: #1abc9c;
+a:hover {
+    color: #936;
 }
 
-.article-meta {
-    color: #7f8c8d;
-    font-size: 0.9rem;
-    margin-bottom: 15px;
+/* ============================================================================
+ *  表單元素
+ * ============================================================================ */
+input, textarea, select, button {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    color: #222;
+    background: #fff;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #936;
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.08);
+}
+
+input[type="submit"], button, .button {
+    background-color: #936;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: opacity 0.3s;
+}
+
+input[type="submit"]:hover, button:hover, .button:hover {
+    opacity: 0.9;
+}
+
+/* ============================================================================
+ *  網站標頭
+ * ============================================================================ */
+.site-header {
+    background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);
+    color: white;
+    padding: 20px 0;
+    background-size: cover;
+    background-position: center;
+    min-height: 100px;
+}
+
+.logo-area {
+    text-align: center;
+    margin: 30px auto;
+}
+
+.site-title {
+    font: bold 60px/1 'PT Serif', serif;
+    color: #936;
+    letter-spacing: -0.02em;
+    margin-bottom: 5px;
+}
+
+.site-description {
+    font-size: 18px;
+    color: rgba(255,255,255,0.9);
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* 導航選單 */
+.main-nav {
+    background: #936;
+}
+
+.main-nav ul {
+    list-style: none;
     display: flex;
-    gap: 15px;
+    justify-content: center;
+    padding: 0;
 }
 
-.article-meta .category {
+.main-nav li {
+    padding: 0;
+}
+
+.main-nav a, .main-nav span {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.main-nav a:hover, .main-nav span:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+.main-nav .current {
+    background-color: rgba(0, 0, 0, 0.22);
+}
+
+/* ============================================================================
+ *  主內容區
+ * ============================================================================ */
+.main-content {
+    padding: 60px 0;
+    position: relative;
+}
+
+.articles-list {
+    width: 100%;
+    float: none;
+}
+
+/* 文章項目 */
+.article-item {
+    margin-bottom: 60px;
+}
+
+.article-item h2 {
+    font-size: 30px;
+    padding-bottom: 0;
+}
+
+.article-item .article-meta {
+    margin: 10px 0 0;
+    font-size: 12px;
+    color: #999;
+}
+
+.article-item .article-meta span {
+    padding-right: 20px;
+}
+
+.article-item .article-meta .category {
     background: #e8f4fc;
     color: #3498db;
     padding: 2px 8px;
     border-radius: 3px;
-    font-size: 0.8rem;
+    text-decoration: none;
 }
 
-.article-excerpt {
-    color: #555;
+.article-item .article-excerpt {
+    margin: 30px 0 0 0;
+}
+
+.article-item .article-excerpt p {
     margin-bottom: 15px;
-    line-height: 1.7;
 }
 
+/* Read More 按鈕 */
 .read-more {
     display: inline-block;
-    color: #1abc9c;
+    padding: 10px 20px;
+    background: #936;
+    color: white;
     text-decoration: none;
-    font-weight: 500;
-    padding: 5px 0;
-    border-bottom: 1px dashed #1abc9c;
-    transition: all 0.3s;
+    border-radius: 5px;
+    text-align: right;
+    float: right;
+    transition: opacity 0.3s;
+    position: relative;
+}
+
+.read-more:after {
+    content: '➤';
+    margin-left: 10px;
+    margin-right: -5px;
 }
 
 .read-more:hover {
-    border-bottom: 1px solid #1abc9c;
-    padding-left: 10px;
+    opacity: 0.8;
+    color: white;
 }
 
-/* 頁尾樣式 */
+/* ============================================================================
+ *  側邊欄（如果需要）
+ * ============================================================================ */
+.sidebar {
+    display: none;
+}
+
+/* ============================================================================
+ *  網站頁尾
+ * ============================================================================ */
 .site-footer {
-    background: #2c3e50;
+    width: 100%;
+    padding: 20px 0;
+    background: #936;
     color: white;
-    padding: 30px 0;
-    text-align: center;
-    margin-top: 50px;
 }
 
 .site-footer a {
-    color: #1abc9c;
+    color: white;
     text-decoration: none;
 }
 
+.site-footer a:hover {
+    color: #999;
+    text-decoration: underline;
+}
+
 .copyright {
-    opacity: 0.8;
-    font-size: 0.9rem;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
-/* 響應式設計 */
-@media (max-width: 768px) {
-    .site-title {
-        font-size: 2rem;
+/* 返回頂部按鈕 */
+#toTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 14px 12px;
+    display: none;
+    cursor: pointer;
+    background: #222;
+    color: white;
+    border-radius: 3px;
+    transform: rotate(-90deg);
+    font-size: 24px;
+    text-align: center;
+    z-index: 1000;
+    text-decoration: none;
+}
+
+#toTop:hover {
+    background: #999;
+}
+
+/* ============================================================================
+ *  響應式設計
+ * ============================================================================ */
+
+/* 平板（768px 以上） */
+@media screen and (min-width: 768px) {
+    .logo-area {
+        text-align: left;
     }
     
+    .site-title {
+        font-size: 60px;
+        line-height: 50px;
+    }
+    
+    .copyright {
+        text-align: left;
+    }
+}
+
+/* 桌面（1024px 以上） */
+@media screen and (min-width: 1024px) {
     .main-nav ul {
-        flex-direction: column;
-        gap: 10px;
-        align-items: center;
+        background: transparent;
+        position: static;
+        text-align: center;
     }
     
-    .article-item {
-        padding: 20px;
+    .main-nav li {
+        display: inline-block;
+        position: relative;
     }
     
-    .article-title {
-        font-size: 1.2rem;
+    .main-nav a, .main-nav span {
+        border-bottom: none;
+        font-weight: normal;
+        transition: background 0.3s;
+    }
+    
+    .main-nav > li:hover > a, .main-nav > li:hover > span {
+        background: rgba(255,255,255,0.3);
+    }
+    
+    .articles-list {
+        width: 67.13%;
+        float: left;
+    }
+    
+    .sidebar {
+        width: 27.78%;
+        margin-top: 0;
+        float: right;
+        display: block;
+    }
+    
+    .sidebar .widget {
+        margin-bottom: 60px;
+    }
+    
+    .sidebar .wtitle {
+        padding: 0 0 5px 0;
+        margin-bottom: 15px;
+        border-bottom: 2px solid #555;
+        color: #555;
+        font-size: 20px;
+        text-align: center;
+        text-transform: uppercase;
     }
 }
 
-@media (max-width: 480px) {
-    .site-title {
-        font-size: 1.8rem;
-    }
-    
-    .site-description {
-        font-size: 1rem;
-    }
-    
-    .container {
-        padding: 0 15px;
-    }
+/* ============================================================================
+ *  工具類別
+ * ============================================================================ */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.float-left { float: left; }
+.float-right { float: right; }
+.clear-both { clear: both; }
+.hidden { display: none; }
+
+/* 圖片樣式 */
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+.alignleft {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.alignright {
+    float: right;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
 }
