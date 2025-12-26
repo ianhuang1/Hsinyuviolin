@@ -1,30 +1,206 @@
-/* GitHub Pages 靜態化補丁 */
-
-/* 1. 確保側邊欄在電腦版正確顯示 (因為靜態頁面可能少了某些 WP 動態生成的 Class) */
-@media screen and (min-width: 1024px) {
-    body.layout-rightbar #content { width: 67%; float: left; }
-    body.layout-rightbar #sidebar { width: 28%; float: right; display: block; }
+/* 基本重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* 2. 修正圖片自適應問題 */
-.entry img, .entry-box img {
-    height: auto;
-    max-width: 100%;
-    display: block;
-    margin: 10px auto;
+body {
+    font-family: 'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
 }
 
-/* 3. 手機版選單預設顯示 (若無 JS 控制選單，可強制顯示或調整) */
-@media screen and (max-width: 1023px) {
-    .topnav nav { display: block !important; } /* 靜態站若暫無 JS 選單功能，建議先讓導覽列顯示 */
-    #mobile-menu { display: none; } /* 隱藏無法點擊的選單按鈕 */
-    .top-menu { position: static; width: 100%; }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* 4. 清除 WordPress 管理列留下的頂部空白 */
-html { margin-top: 0 !important; }
-* html body { margin-top: 0 !important; }
-@media screen and (max-width: 782px) {
-    html { margin-top: 0 !important; }
-    * html body { margin-top: 0 !important; }
+/* 標頭樣式 */
+.site-header {
+    background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);
+    color: white;
+    padding: 20px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo-area {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.site-title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.site-description {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-style: italic;
+}
+
+/* 導航選單 */
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 15px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.main-nav a:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.main-nav .current span {
+    font-weight: bold;
+    color: #1abc9c;
+}
+
+/* 主內容區 */
+.main-content {
+    padding: 40px 20px;
+}
+
+/* 文章列表 */
+.articles-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.article-item {
+    background: white;
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    border-left: 4px solid #3498db;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.article-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.article-title {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.article-title a {
+    color: #2c3e50;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.article-title a:hover {
+    color: #1abc9c;
+}
+
+.article-meta {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    display: flex;
+    gap: 15px;
+}
+
+.article-meta .category {
+    background: #e8f4fc;
+    color: #3498db;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+}
+
+.article-excerpt {
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.7;
+}
+
+.read-more {
+    display: inline-block;
+    color: #1abc9c;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 5px 0;
+    border-bottom: 1px dashed #1abc9c;
+    transition: all 0.3s;
+}
+
+.read-more:hover {
+    border-bottom: 1px solid #1abc9c;
+    padding-left: 10px;
+}
+
+/* 頁尾樣式 */
+.site-footer {
+    background: #2c3e50;
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.site-footer a {
+    color: #1abc9c;
+    text-decoration: none;
+}
+
+.copyright {
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .site-title {
+        font-size: 2rem;
+    }
+    
+    .main-nav ul {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    
+    .article-item {
+        padding: 20px;
+    }
+    
+    .article-title {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-title {
+        font-size: 1.8rem;
+    }
+    
+    .site-description {
+        font-size: 1rem;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
 }
